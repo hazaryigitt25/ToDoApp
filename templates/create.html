@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+{% from "includes/formhelpers.html" import render_field %}
+<section class="hero is-success">
+<div class="hero-body">
+<div class="row align-items-center justify-content-center">
+<div class="col-md-4 col-lg-offset-4">
+<h3>Create ToDo</h3>
+<form method="post">
+        {{render_field(form.title,class = "form-control")}}
+        {{render_field(form.content,class = "form-control")}}
+        <button class="button is-link is-focused">Create</button>
+        <a href="/dashboard" class="button is-link is-focused">Back</a>
+</form>
+</div>
+</div>
+</div>
+</section>
+{% endblock body %}
+

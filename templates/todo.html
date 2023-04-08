@@ -1,0 +1,37 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<section class="hero is-success">
+<div class="hero-body">
+  <div class="row align-items-center justify-content-center">
+    <h3>{{title}}</h3>
+    <h1>Here is your ToDo list</h1>
+    <hr>
+    <a href="/dashboard" class="button is-info is-focused">Back</a>
+    <br><br>
+    <h2>Your ToDo's</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ToDo</th>
+          <th>Completed</th>
+          <th>Complete</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+        {% for content in contents %}
+        <tr class="is-selected">
+        <th>{{content.content}}</th>
+        {% if content.complete %}
+        <th>Completed</th>
+        {% else %}
+        <th>Uncompleted</th>
+        {% endif %}
+        <th><a href="/complete/{{content.id}}" class="button is-success is-focused">Update</a></th>
+        <th><a href="/delete/{{content.id}}" class="button is-danger is-focused">Delete</a></th>
+        </tr>
+        {% endfor %}
+  </div>
+</div>
+</section>
+{% endblock body %}

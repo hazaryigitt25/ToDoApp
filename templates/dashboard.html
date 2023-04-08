@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<section class="hero is-success">
+<div class="hero-body">
+    <h3>Welcome, {{session["user"]}}</h3>
+    <h1>Here is your ToDo list</h1>
+    <hr>
+    <a href="/create" class="button is-link is-focused">Create ToDo</a>
+    <br><br>
+    <h2>Your ToDo's</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Completed</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+        {% for title in titles %}
+        <tr class="is-selected">
+        <th><a href="/todo/{{title.id}}">{{title.title}}</a></th>
+        {% if title.complete %}
+        <th>Completed</th>
+        {% else %}
+        <th>Uncompleted</th>
+        {% endif %}
+        <th><a href="/deletetitle/{{title.id}}" class="button is-danger is-focused">Delete</a></th>
+        </tr>
+        {% endfor %}
+</div>
+</section>
+{% endblock body %}
